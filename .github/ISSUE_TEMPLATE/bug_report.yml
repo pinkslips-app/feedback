@@ -2,43 +2,111 @@
 # https://github.com/jonzey231/AerioTV/tree/main/.github/ISSUE_TEMPLATE
 
 name: Bug Report
-description: Report a bug or unexpected behavior
+description: Report a bug or unexpected behavior in PinkSlips
 title: "[Bug]: "
 labels: ["bug"]
+
 body:
-  - type: input
-    id: version
+  - type: dropdown
+    id: platform
     attributes:
-      label: App Version
-      description: What version of the app are you running?
-      placeholder: e.g. v1.6.3
+      label: Platform
+      description: Where did you run into this?
+      options:
+        - Web
+        - iOS app
+        - Android app
+        - All platforms
     validations:
       required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: PinkSlips Version
+      description: Enter the version shown in PinkSlips. Web users can enter "Web."
+      placeholder: "Example: 8.0.7 or Web"
+    validations:
+      required: true
+
+  - type: input
+    id: shell-version
+    attributes:
+      label: Native Shell Version
+      description: For the iOS or Android app, enter the installed shell version if known. Web users can enter "N/A."
+      placeholder: "Example: 8.0 or N/A"
+    validations:
+      required: false
 
   - type: input
     id: device
     attributes:
-      label: Device / Environment
-      description: Device model, OS version (iOS, iPadOS, tvOS), and any relevant context
-      placeholder: e.g. iPhone 15 Pro, iOS 18.2
+      label: Device or Browser
+      description: Include your device, operating system, or browser.
+      placeholder: "Example: iPhone 15 Pro on iOS 19, Pixel 9 on Android 16, or Chrome on Windows"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where in PinkSlips
+      description: Which part of PinkSlips does this affect?
+      options:
+        - Build pages
+        - Creating or editing a build
+        - Garage
+        - Browse or Scene
+        - Explore or Mod Index
+        - Clubs, shops, events, or routes
+        - Rankings or badges
+        - Boost+ or billing
+        - Account or sign-in
+        - Notifications or email
+        - Something else
+    validations:
+      required: false
+
+  - type: input
+    id: url
+    attributes:
+      label: Page or build URL
+      description: If the problem happens on a specific page, paste the link.
+      placeholder: "Example: https://pinkslips.app/your-name/your-build"
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the exact steps someone else can follow to see the problem.
+      placeholder: |
+        1. Go to...
+        2. Tap...
+        3. See...
     validations:
       required: true
 
   - type: textarea
-    id: description
+    id: expected
     attributes:
-      label: Detailed Description
-      description: What happened? What did you expect to happen? Include steps to reproduce, logs, screenshots, and any other context.
-      placeholder: |
-        **Steps to reproduce:**
-        1.
-        2.
-        3.
-
-        **Expected behavior:**
-
-        **Actual behavior:**
-
-        **Logs / screenshots:**
+      label: What did you expect to happen?
     validations:
       required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include any error message you saw.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Screenshots, recordings, or additional context
+      description: Add anything else that helps, such as how often it happens or when it started. Do not include passwords or private information.
+    validations:
+      required: false
